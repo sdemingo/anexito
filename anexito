@@ -50,7 +50,7 @@ if __name__=='__main__':
         sys.exit(0)
 
     if (sys.argv[1] == "-p"):
-        os.mkdir("anexos")
+        os.makedirs("anexos", exist_ok = True)
         with open('nombres.txt') as f:
             for nombre in f:
                 nombre=nombre.replace("\n","")

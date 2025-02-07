@@ -14,7 +14,7 @@ pip install fillpdf
 ## Uso
 
 Escribir los nombres completos de los alumnos en el fichero `nombres.txt`. Uno por línea. 
-Ejecutar `anexito -p` y los anexos serán creado en un directorio aparte. 
+Ejecutar `./anexito -p` y los anexos serán creados en un directorio aparte llamado `anexos`. 
 
 
 
