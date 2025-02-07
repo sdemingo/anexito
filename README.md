@@ -19,5 +19,6 @@ Ejecutar:
 * `./anexito -a1`: Para obtener los Anexos I
 * `./anexito -a2`: Para obtener los Anexos II
 
+Los anexos son creados en un directorio local llamado `anexos`.
 
 
