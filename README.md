@@ -1,4 +1,4 @@
-# anexito
+# Anexito
 
 Autorellenador de campos de formularios en PDF
 
@@ -11,26 +11,10 @@ Necesita la librería [fillpdf](https://github.com/t-houssian/fillpdf). Para ins
 pip install fillpdf
 ```
 
-## Ejemplo de uso de la librería
+## Uso
 
-Para sobreescribir varios campos usar un diccionario como muestra el ejemplo:
-
-```
-data_dict = {
-'Campo1': 'valor del campo2',
-'Campo2': 'valor del campo2',
-}
-
-fillpdfs.write_fillable_pdf('formulario.pdf', 'nuevo.pdf', data_dict)
-
-```
-
-Para conseguir los nombres de los campos incluidos en el documento se puede usar el comando `extractfillpdf` incluido con la librería. Este comando genera un archivo JSON con todos los nombres.
-
-```
-$ extractfillpdf formulario.pdf
-```
-
+Escribir los nombres completos de los alumnos en el fichero `nombres.txt`. Uno por línea. 
+Ejecutar `anexito -p` y los anexos serán creado en un directorio aparte. 
 
 
 
