@@ -1,3 +1,4 @@
 *.pdf
 !plantilla-anexito.pdf
+!plantilla-anexito-2.pdf
 anexos/*

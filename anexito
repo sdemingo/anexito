@@ -14,7 +14,7 @@ import os
 codigo_ciclo="IFCS01"
 codigo_modulo="0369"
 
-data_dict = {
+data_dict_anexo_1 = {
 'Grupo':'Administración de Sistemas Informáticos en Red',
 'Grupo_2':'1º ASIR',
 'Curso académico':'2024/2025',
@@ -22,17 +22,20 @@ data_dict = {
 'NO':'Implantación de Sistemas Informáticos',
 }
 
+data_dict_anexo_2 = {
+'Ciclo formativo o Curso de especialización':'Administración de Sistemas Informáticos en Red',
+'Grupo_3':'1º ASIR',
+'Curso académico_2':'2024/2025',
+'Año escolar_2':'2025',
+'EL EQUIPO DOCENTE EN SESIÓN DE EVALUACIÓN DE FECHA':'00/00/00',
+}
 
-def genera_plantilla(base,salida):
-    fillpdfs.write_fillable_pdf(base,salida, data_dict)
+def limpia_nombre(nombre):
+    return nombre.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n").replace(" ","_")
 
-
-def genera_anexo(nombre,plantilla):
-    fichero="_{0}_{1}_ANEXOI.pdf".format(codigo_ciclo,codigo_modulo)
-    fichero=nombre.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n").replace(" ","_")+fichero
-    data_dict['Alumnoa']=nombre
-
-    fillpdfs.write_fillable_pdf('plantilla-anexito.pdf', "./anexos/"+fichero, data_dict)
+def genera_anexo(nombre,plantilla,campos,suffix):
+    fichero=limpia_nombre(nombre)+suffix
+    fillpdfs.write_fillable_pdf(plantilla, "./anexos/"+fichero, campos)
 
 
 if __name__=='__main__':
@@ -42,21 +45,31 @@ if __name__=='__main__':
         sys.exit(0)
 
     if (sys.argv[1] == "-l"):
-        fillpdfs.print_form_fields("plantilla-anexito.pdf")
+        fillpdfs.print_form_fields(sys.argv[2])
         sys.exit(0)
 
-    if (sys.argv[1] == "-t"):
-        genera_plantilla("formulario.pdf","plantilla.pdf")
-        sys.exit(0)
-
-    if (sys.argv[1] == "-p"):
+    if (sys.argv[1] == "-a1"):
         os.makedirs("anexos", exist_ok = True)
         with open('nombres.txt') as f:
             for nombre in f:
                 nombre=nombre.replace("\n","")
                 if len(nombre)>0:
-                    print ("Genero anexo para "+nombre)
-                    genera_anexo(nombre,"plantilla-anexito.pdf")
+                    print ("Genero anexo I para "+nombre)
+                    data_dict_anexo_1['Alumnoa']=nombre
+                    subfijo="_{0}_{1}_ANEXOI.pdf".format(codigo_ciclo,codigo_modulo)
+                    genera_anexo(nombre,"plantilla-anexito-1.pdf",data_dict_anexo_1,subfijo)
+        sys.exit(0)
+
+    if (sys.argv[1] == "-a2"):
+        os.makedirs("anexos", exist_ok = True)
+        with open('nombres.txt') as f:
+            for nombre in f:
+                nombre=nombre.replace("\n","")
+                if len(nombre)>0:
+                    print ("Genero anexo II para "+nombre)
+                    data_dict_anexo_2['Alumnoa_2']=nombre
+                    subfijo="_{0}_ANEXOII.pdf".format(codigo_ciclo)
+                    genera_anexo(nombre,"plantilla-anexito-2.pdf",data_dict_anexo_2,subfijo)
         sys.exit(0)
 
     print ("Argumentos  erróneos")
