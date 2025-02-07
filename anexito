@@ -5,29 +5,26 @@ from fillpdf import fillpdfs
 import sys
 import os
 
+from datos import *
 
 # Set the returned dictionary values a save to a variable
 # For radio boxes ('Off' = not filled, 'Yes' = filled)
 
 
-
-codigo_ciclo="IFCS01"
-codigo_modulo="0369"
-
 data_dict_anexo_1 = {
-'Grupo':'Administración de Sistemas Informáticos en Red',
-'Grupo_2':'1º ASIR',
-'Curso académico':'2024/2025',
-'Año escolar':'2025',
-'NO':'Implantación de Sistemas Informáticos',
+'Grupo': nombre_ciclo,
+'Grupo_2': grupo,
+'Curso académico': curso,
+'Año escolar': anio,
+'NO': nombre_modulo,
 }
 
 data_dict_anexo_2 = {
-'Ciclo formativo o Curso de especialización':'Administración de Sistemas Informáticos en Red',
-'Grupo_3':'1º ASIR',
-'Curso académico_2':'2024/2025',
-'Año escolar_2':'2025',
-'EL EQUIPO DOCENTE EN SESIÓN DE EVALUACIÓN DE FECHA':'00/00/00',
+'Ciclo formativo o Curso de especialización':nombre_ciclo,
+'Grupo_3': grupo,
+'Curso académico_2': curso,
+'Año escolar_2': anio,
+'EL EQUIPO DOCENTE EN SESIÓN DE EVALUACIÓN DE FECHA': fecha,
 }
 
 def limpia_nombre(nombre):
