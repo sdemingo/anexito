@@ -7,9 +7,12 @@ import os
 
 from datos import *
 
-# Set the returned dictionary values a save to a variable
-# For radio boxes ('Off' = not filled, 'Yes' = filled)
-
+#
+#       AUTORELLENADO DE LOS ANEXOS I Y II SOBRE LA VALORACIÓN PARA LA FFE
+#
+#  Para modificar los parámetros mostrables en ambos anexos editar el fichero datos.py
+#  suministrado en este mismo directorio
+#
 
 data_dict_anexo_1 = {
 'Grupo': nombre_ciclo,
@@ -27,8 +30,10 @@ data_dict_anexo_2 = {
 'EL EQUIPO DOCENTE EN SESIÓN DE EVALUACIÓN DE FECHA': fecha,
 }
 
+
 def limpia_nombre(nombre):
     return nombre.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n").replace(" ","_")
+
 
 def genera_anexo(nombre,plantilla,campos,suffix):
     fichero=limpia_nombre(nombre)+suffix
