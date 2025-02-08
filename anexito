@@ -48,25 +48,45 @@ if __name__=='__main__':
     if (sys.argv[1] == "-a1"):
         os.makedirs("anexos", exist_ok = True)
         with open('nombres.txt') as f:
-            for nombre in f:
-                nombre=nombre.replace("\n","").replace("\t"," ")
+            for linea in f:
+                if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):
+                    continue
+                linea=linea.replace("\n","").replace("\t"," ")
+                campos=linea.split(",")
+                if len(campos)==1:
+                    nombre=campos[0]
+                    apellidos=""
+                else:
+                    nombre=campos[0]
+                    apellidos=campos[1]
                 if len(nombre)>0:
-                    print ("Genero anexo I para "+nombre)
-                    data_dict_anexo_1['Alumnoa']=nombre
-                    subfijo="_{0}_{1}_ANEXOI.pdf".format(codigo_ciclo,codigo_modulo)
-                    genera_anexo(nombre,"plantilla-anexito-1.pdf",data_dict_anexo_1,subfijo)
+                    print ("Genero anexo I para "+nombre+" "+apellidos)
+                    data_dict_anexo_1['Alumnoa']=nombre+" "+apellidos
+                    prefijo="{0}_{1}_".format(apellidos.replace(" ","_"), nombre.replace(" ","_"))
+                    subfijo="{0}_{1}_ANEXOI.pdf".format(codigo_ciclo,codigo_modulo)
+                    genera_anexo(prefijo,"plantilla-anexito-1.pdf",data_dict_anexo_1,subfijo)
         sys.exit(0)
 
     if (sys.argv[1] == "-a2"):
         os.makedirs("anexos", exist_ok = True)
         with open('nombres.txt') as f:
-            for nombre in f:
-                nombre=nombre.replace("\n","").replace("\t"," ")
+            for linea in f:
+                if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):
+                    continue
+                linea=linea.replace("\n","").replace("\t"," ")
+                campos=linea.split(",")
+                if len(campos)==1:
+                    nombre=campos[0]
+                    apellidos=""
+                else:
+                    nombre=campos[0]
+                    apellidos=campos[1]
                 if len(nombre)>0:
-                    print ("Genero anexo II para "+nombre)
-                    data_dict_anexo_2['Alumnoa_2']=nombre
-                    subfijo="_{0}_ANEXOII.pdf".format(codigo_ciclo)
-                    genera_anexo(nombre,"plantilla-anexito-2.pdf",data_dict_anexo_2,subfijo)
+                    print ("Genero anexo II para "+nombre+" "+apellidos)
+                    data_dict_anexo_2['Alumnoa_2']=nombre+" "+apellidos
+                    prefijo="{0}_{1}_".format(apellidos.replace(" ","_"), nombre.replace(" ","_"))
+                    subfijo="{0}_{1}_ANEXOII.pdf".format(codigo_ciclo,codigo_modulo)
+                    genera_anexo(prefijo,"plantilla-anexito-2.pdf",data_dict_anexo_2,subfijo)
         sys.exit(0)
 
     print ("Argumentos  erróneos")
