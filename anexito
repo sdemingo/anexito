@@ -48,7 +48,7 @@ def limpia_nombre(nombre):
 
 def genera_anexo(nombre,plantilla,campos,suffix):
     fichero=limpia_nombre(nombre)+suffix
-    fillpdfs.write_fillable_pdf(plantilla, "./anexos/"+fichero, campos,flatten=True)
+    fillpdfs.write_fillable_pdf(plantilla, "./anexos/"+fichero, campos)
 
 
 if __name__=='__main__':
