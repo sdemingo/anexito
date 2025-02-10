@@ -48,7 +48,7 @@ def limpia_nombre(nombre):
 
 def genera_anexo(nombre,plantilla,campos,suffix):
     fichero=limpia_nombre(nombre)+suffix
-    fillpdfs.write_fillable_pdf(plantilla, "./anexos/"+fichero, campos)
+    fillpdfs.write_fillable_pdf(plantilla, "./anexos/"+fichero, campos,flatten=True)
 
 
 if __name__=='__main__':
@@ -63,8 +63,12 @@ if __name__=='__main__':
         sys.exit(0)
 
     if (sys.argv[1] == "-a1"):
+        if (len(sys.argv)<3):
+            print ("Falta fichero de nombres")
+            sys.exit(0)
+
         os.makedirs("anexos", exist_ok = True)
-        with open('nombres.txt') as f:
+        with open(sys.argv[2]) as f:
             for linea in f:
                 if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):
                     continue
@@ -85,8 +89,12 @@ if __name__=='__main__':
         sys.exit(0)
 
     if (sys.argv[1] == "-a2"):
+        if (len(sys.argv)<3):
+            print ("Falta fichero de nombres")
+            sys.exit(0)
+
         os.makedirs("anexos", exist_ok = True)
-        with open('nombres.txt') as f:
+        with open(sys.argv[2]) as f:
             for linea in f:
                 if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):
                     continue
