@@ -1,8 +1,10 @@
 #!/bin/bash
 
-mkdir -p ./impresos
+DIR="anexos_noeditables"
+
+mkdir -p ./$DIR
 for fichero in  `find anexos -type f -name '*.pdf'`
 do
     salida=`basename $fichero`
-    pdftocairo $fichero -pdf ./impresos/$salida
+    pdftocairo $fichero -pdf ./$DIR/$salida
 done
