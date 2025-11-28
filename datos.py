@@ -1,14 +1,30 @@
 
 
+# Datos de tus módulos o asignaturas. Rellena aqui la lista
+# de módulos o asignaturas siguiendo este formato:
+#
+#      [codigo, nombre de la asignatura]
+#
+# Usa una línea por asignatura y recuerda poner la coma entre el 
+# código y el nombre.
+
+
+modulos="""
+
+0369, Implantación de Sistemas Informáticos
+0202, Ejemplo de asignatura
+
+"""
+
+
+
+## Datos de la cabecera
+
 # Modifica los siguientes parámetros para ajustarlos a tus necesidades.
 # Si quieres que alguno de estos campos salga en blanco usa una 
 # cadena vacia o ""
 
-## Datos de la cabecera
-
 codigo_ciclo="IFCS01"
-nombre_modulo="Implantación de Sistemas Informáticos"
-codigo_modulo="0369"
 nombre_ciclo="Administración de Sistemas Informáticos en Red"
 grupo="1º ASIR"
 curso="2024/2025"

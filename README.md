@@ -16,7 +16,9 @@ El script ha sido probado sobre Linux Debian 12.
 
 ## Uso
 
-Edita el fichero `datos.py` con los parámetros de curso, grupo, módulo, etc. apropiados a tus necesidades. Escribe los nombres completos de los alumnos en el fichero `nombres.txt` o en otro fichero a tu elección. Introduce uno por línea y usa la coma para separar el nombre del apellido como en el ejemplo:
+Edita el fichero `datos.py` con los parámetros apropiados a tus necesidades. En el caso de los módulos o asignaturas recuerda seguir el formato indicado. Escribiendo en líneas separadas tanto los códigos como los nombres de estos módulos separados por una coma.
+
+Escribe los nombres completos de los alumnos en el fichero `nombres.txt` o en otro fichero a tu elección. Introduce uno por línea y usa la coma para separar el nombre del apellido como en el ejemplo:
 
 ```
 Sergio,García
