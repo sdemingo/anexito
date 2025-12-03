@@ -5,8 +5,7 @@ Autorellenador de campos de formularios en PDF para anexos sobre valoración de 
 Puedes descargar la [última versión para Windows de este enlace](https://github.com/sdemingo/anexito/releases/download/anexito-1.0/anexito-1.0.exe).
 
 
-![](./captura.png){ width: 200px; }
-
+![](./captura.png)
 
 ## Uso general
 
