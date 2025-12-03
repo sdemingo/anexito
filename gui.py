@@ -78,9 +78,9 @@ def anexos_a1_de_modulo(data_dict_anexo_1, codigo_modulo, nombre_modulo,fichero_
 
 
 
-def anexos_a2_de_modulo(codigo_modulo, nombre_modulo,fichero_nombres):
+def anexos_a2_de_modulo(data_dict_anexo_2, fichero_nombres):
 
-    directorio=f"{BASE_DIR}/anexos_a2_{codigo_modulo}"
+    directorio=f"{BASE_DIR}/anexos_a2_{codigo_ciclo}"
     os.makedirs(directorio, exist_ok = True)
     with open(fichero_nombres, encoding="utf-8") as f:
         for linea in f:
@@ -98,7 +98,7 @@ def anexos_a2_de_modulo(codigo_modulo, nombre_modulo,fichero_nombres):
                 print ("Genero anexo II para "+nombre+" "+apellidos)
                 data_dict_anexo_2['Alumnoa_2']=nombre+" "+apellidos
                 prefijo="{0}_{1}_".format(apellidos.replace(" ","_"), nombre.replace(" ","_"))
-                subfijo="{0}_{1}_ANEXOII.pdf".format(codigo_ciclo,codigo_modulo)
+                subfijo="{0}_ANEXOII.pdf".format(codigo_ciclo)
                 genera_anexo(directorio, prefijo,"plantilla-anexito-2.pdf",data_dict_anexo_2,subfijo)
 
 
@@ -218,7 +218,7 @@ def main_gui():
 
     # ---------- SELECTOR DE FICHERO ----------
 
-    label_fichero = tk.Label(root, text="Fichero:")
+    label_fichero = tk.Label(root, text="Alumnos:")
     label_fichero.grid(row=13, column=0, padx=5, pady=5, sticky="e")
 
     entry_fichero = tk.Entry(root, textvariable=fichero_var, width=75)
