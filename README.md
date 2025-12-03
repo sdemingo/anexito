@@ -5,6 +5,9 @@ Autorellenador de campos de formularios en PDF para anexos sobre valoración de 
 Puedes descargar la [última versión para Windows de este enlace](https://github.com/sdemingo/anexito/releases/download/anexito-1.0/anexito-1.0.exe).
 
 
+![](./captura.png){ width: 200px; }
+
+
 ## Uso general
 
 Para generar los anexos debes rellenar todos los datos incluidos en la interfaz visual que se muestra al arrancar. Es importante prestar atención al campo llamado «Módulos». En el debe aparecer en líneas separadas tanto **los códigos como los nombres de estos módulos separados por una coma**. Un ejemplo de lo que debe haber escrito en este campo puede ser lo siguiente:
