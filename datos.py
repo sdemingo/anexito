@@ -9,7 +9,7 @@
 # código y el nombre.
 
 
-modulos="""
+datos_modulos="""
 
 0369, Implantación de Sistemas Informáticos
 0202, Ejemplo de asignatura

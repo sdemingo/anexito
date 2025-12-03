@@ -38,9 +38,10 @@ def genera_anexo(directorio, nombre,plantilla,campos,suffix):
     fillpdfs.write_fillable_pdf(plantilla_pdf, f"{directorio}/{fichero}", campos)
 
 
-def crea_lista_modulos():    
+def crea_lista_modulos(texto_modulos):    
     lista_modulos=[]
-    for linea in modulos.split("\n"):
+
+    for linea in texto_modulos.split("\n"):
         flinea=linea.split(",")
         if len(flinea)>1:
             mod=(flinea[0],flinea[1])
@@ -108,6 +109,8 @@ entradas={}
 
 root = tk.Tk()
 fichero_var = tk.StringVar()
+radio_var = tk.StringVar(value="anexo 1")
+global text_area
 
 def seleccionar_fichero():
     ruta = filedialog.askopenfilename()
@@ -115,6 +118,8 @@ def seleccionar_fichero():
         fichero_var.set(ruta)
 
 def generar():
+
+    global text_area
 
     if (fichero_var.get() == ""):
         messagebox.showerror("Error", "Falta fichero de nombres")
@@ -129,22 +134,32 @@ def generar():
     datos_a1["Text1"]=entradas["dia"].get()
     datos_a1["de"]=entradas["mes"].get()
     datos_a1["de_2"]=entradas["año"].get()
-    
-    lista_modulos=crea_lista_modulos()
-    
 
+    datos_a2={}
+    datos_a2["Ciclo formativo o Curso de especialización"] = entradas["nombre_ciclo"].get()
+    datos_a2["Grupo_3"] = entradas["grupo"].get()
+    datos_a2["Curso académico_2"] = entradas["curso"].get()
+    datos_a2["Año escolar_2"] = entradas["año"].get()
+    datos_a2["EL EQUIPO DOCENTE EN SESIÓN DE EVALUACIÓN DE FECHA"] = entradas["fecha"].get()
+    datos_a2["En_2"] = entradas["lugar"].get()
+    datos_a2["Text2"] = entradas["dia"].get()
+    datos_a2["de_3"] = entradas["mes"].get()
+    datos_a2["de_4"] = entradas["año"].get()
+    
+    
+    lista_modulos=crea_lista_modulos(text_area.get("1.0",tk.END))
+    
     for m in lista_modulos:
+            
         nombre_modulo=m[1]
         codigo_modulo=m[0]
         nombres=fichero_var.get()
 
-        # Por ahora solo genero anexos 1
-        anexos_a1_de_modulo(datos_a1, codigo_modulo, nombre_modulo, nombres)
+        if (radio_var.get() == "anexo 1"):
+            anexos_a1_de_modulo(datos_a1, codigo_modulo, nombre_modulo, nombres)
 
-        # if (sys.argv[1] == "-a1"):
-        #     anexos_a1_de_modulo(codigo_modulo, nombre_modulo, sys.argv[2])
-        # if (sys.argv[1] == "-a2"):
-        #     anexos_a2_de_modulo(codigo_modulo, nombre_modulo, sys.argv[2])
+        if (radio_var.get() == "anexo 2"):
+            anexos_a2_de_modulo(datos_a2, nombres)
 
     messagebox.showinfo("Listo", f"Generados generados")
 
@@ -199,6 +214,9 @@ def main_gui():
     area_label = tk.Label(root, text="Módulos")
     area_label.grid(row=10, column=0, padx=5, pady=5, sticky="ne")
 
+    global text_area
+
+    text_area = tk.Text(root, width=75, height=10)
     text_area = tk.Text(root, width=75, height=10)
     text_area.grid(row=10, column=1, padx=5, pady=5)
 
@@ -206,14 +224,11 @@ def main_gui():
 
 
     # ---------- RADIOBUTTONS ----------
-    radio_var = tk.StringVar(value="anexo 1")
-
     radio1 = tk.Radiobutton(root, text="anexo 1", variable=radio_var, value="anexo 1")
     radio2 = tk.Radiobutton(root, text="anexo 2", variable=radio_var, value="anexo 2")
 
     radio1.grid(row=11, column=1, sticky="w", pady=2)
     radio2.grid(row=12, column=1, sticky="w", pady=2)
-    radio2.config(state="disabled") # Por ahora deshabilito la opción del anexo II
 
 
     # ---------- SELECTOR DE FICHERO ----------

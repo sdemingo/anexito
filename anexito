@@ -53,20 +53,12 @@ if __name__=='__main__':
         main_gui()
         sys.exit(0)
 
-    # if (sys.argv[1] == "-gui"):
-    #     main_gui()
-    #     sys.exit(0)
-
-    # if (sys.argv[1] == "-l"):
-    #     fillpdfs.print_form_fields(sys.argv[2])
-    #     sys.exit(0)
-
     if ( (sys.argv[1] == "-a1") or (sys.argv[1] == "-a2")):
         if (len(sys.argv)<3):
             print ("Falta fichero de nombres")
             sys.exit(0)
 
-    lista_modulos=crea_lista_modulos()
+    lista_modulos=crea_lista_modulos(datos_modulos)
 
     if (sys.argv[1] == "-a1"):
         for m in lista_modulos:
