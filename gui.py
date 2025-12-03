@@ -1,8 +1,10 @@
+
+import sys
+import os
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
-
 from fillpdf import fillpdfs
-import os
+
 from datos import *
 
 
@@ -16,13 +18,24 @@ modulos_ejemplo="""
 """
 
 
+def ruta_recurso(path_relativo):
+    # Esta función permite encontrar las plantillas
+    # incluso si las hemos añadido al empaquetado EXE con
+    # pyinstaller
+
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, path_relativo)
+    return path_relativo
+
+
 def limpia_nombre(nombre):
     return nombre.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n").replace(" ","_")
 
 
 def genera_anexo(directorio, nombre,plantilla,campos,suffix):
+    plantilla_pdf = ruta_recurso(plantilla)
     fichero=limpia_nombre(nombre)+suffix
-    fillpdfs.write_fillable_pdf(plantilla, f"{directorio}/{fichero}", campos)
+    fillpdfs.write_fillable_pdf(plantilla_pdf, f"{directorio}/{fichero}", campos)
 
 
 def crea_lista_modulos():    
@@ -42,7 +55,7 @@ def anexos_a1_de_modulo(data_dict_anexo_1, codigo_modulo, nombre_modulo,fichero_
 
     directorio=f"{BASE_DIR}/anexos_a1_{codigo_modulo}"
     os.makedirs(directorio, exist_ok = True)
-    with open(fichero_nombres) as f:
+    with open(fichero_nombres, encoding="utf-8") as f:
         for linea in f:
             if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):
                 continue
@@ -69,7 +82,7 @@ def anexos_a2_de_modulo(codigo_modulo, nombre_modulo,fichero_nombres):
 
     directorio=f"{BASE_DIR}/anexos_a2_{codigo_modulo}"
     os.makedirs(directorio, exist_ok = True)
-    with open(fichero_nombres) as f:
+    with open(fichero_nombres, encoding="utf-8") as f:
         for linea in f:
             if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):
                 continue
