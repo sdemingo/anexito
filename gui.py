@@ -8,6 +8,8 @@ from fillpdf import fillpdfs
 from datos import *
 
 
+VERSION="1.1"
+
 BASE_DIR="anexos"
 
 modulos_ejemplo="""
@@ -186,7 +188,7 @@ etiquetas =[
 
 def main_gui():
 
-    root.title("~ Anexito ~")
+    root.title(f"~ Anexito {VERSION} ~")
 
 
     for i in range(len(etiquetas)):
