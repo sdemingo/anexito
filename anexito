@@ -3,11 +3,11 @@
 import sys
 sys.dont_write_bytecode = True
 
-from fillpdf import fillpdfs
-import os
+
 
 from datos import *
 from gui import *
+from app import *
 
 #
 #       AUTORELLENADO DE LOS ANEXOS I Y II SOBRE LA VALORACIÓN PARA LA FFE
@@ -16,40 +16,9 @@ from gui import *
 #  suministrado en este mismo directorio
 #
 
-
-data_dict_anexo_1 = {
-'Grupo': nombre_ciclo,
-'Grupo_2': grupo,
-'Curso académico': curso,
-'Año escolar': anio,
-#'NO': nombre_modulo,
-'En': lugar_firma,
-'Text1': dia_firma,
-'de': mes_firma,
-'de_2':anio_firma
-}
-
-data_dict_anexo_2 = {
-'Ciclo formativo o Curso de especialización':nombre_ciclo,
-'Grupo_3': grupo,
-'Curso académico_2': curso,
-'Año escolar_2': anio,
-'EL EQUIPO DOCENTE EN SESIÓN DE EVALUACIÓN DE FECHA': fecha_reunion,
-'En_2': lugar_firma,
-'Text2': dia_firma,
-'de_3':mes_firma,
-'de_4':anio_firma
-}
-
-BASE_DIR="anexos"
-
-
-
-
 if __name__=='__main__':
         
     if (len(sys.argv)<2):
-        #print ("Faltan argumentos")
         main_gui()
         sys.exit(0)
 
