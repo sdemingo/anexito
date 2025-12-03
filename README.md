@@ -1,17 +1,8 @@
 # Anexito
 
-Autorellenador de campos de formularios en PDF
+Autorellenador de campos de formularios en PDF para anexos sobre valoración de acceso a la FFE.
 
-
-## Dependencias
-
-Necesita la librería [fillpdf](https://github.com/t-houssian/fillpdf). Para instalarla usar `pip`:
-
-```
-pip install fillpdf
-```
-
-El script ha sido probado sobre Linux Debian 12.
+Puedes descargar la [última versión para Windows de este enlace](https://github.com/sdemingo/anexito/releases/download/anexito-1.0/anexito-1.0.exe).
 
 
 ## Uso general
@@ -50,4 +41,14 @@ Una vez hecho esto solo necesitas ejecutar cambiando `nombres.txt` por el nombre
 
 * `./anexito -a1 nombres.txt`: Para obtener los Anexos I
 * `./anexito -a2 nombres.txt`: Para obtener los Anexos II
+
+
+
+## Construcción y dependencias
+
+Necesita la librería [fillpdf](https://github.com/t-houssian/fillpdf). Para instalarla usar `pip`:
+
+```
+pip install fillpdf
+```
 
