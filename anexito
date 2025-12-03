@@ -49,16 +49,17 @@ BASE_DIR="anexos"
 if __name__=='__main__':
         
     if (len(sys.argv)<2):
-        print ("Faltan argumentos")
-        sys.exit(0)
-
-    if (sys.argv[1] == "-gui"):
+        #print ("Faltan argumentos")
         main_gui()
         sys.exit(0)
 
-    if (sys.argv[1] == "-l"):
-        fillpdfs.print_form_fields(sys.argv[2])
-        sys.exit(0)
+    # if (sys.argv[1] == "-gui"):
+    #     main_gui()
+    #     sys.exit(0)
+
+    # if (sys.argv[1] == "-l"):
+    #     fillpdfs.print_form_fields(sys.argv[2])
+    #     sys.exit(0)
 
     if ( (sys.argv[1] == "-a1") or (sys.argv[1] == "-a2")):
         if (len(sys.argv)<3):

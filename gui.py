@@ -10,8 +10,8 @@ BASE_DIR="anexos"
 
 modulos_ejemplo="""
 
-0369, Implantación de Sistemas Informáticos
-0202, Ejemplo de asignatura
+0369, Un ejemplo de asignatura
+0202, Otro ejemplo de asignatura
 
 """
 
