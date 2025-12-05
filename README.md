@@ -2,7 +2,7 @@
 
 Autorellenador de campos de formularios en PDF para anexos sobre valoración de acceso a la FFE.
 
-Puedes descargar la [última versión para Windows de este enlace](https://github.com/sdemingo/anexito/releases/download/anexito-1.1/anexito.exe).
+Puedes descargar la [última versión para Windows de este enlace](https://github.com/sdemingo/anexito/releases/download/anexito-1.2/anexito.exe).
 
 
 ![](./captura.png)
