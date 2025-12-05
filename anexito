@@ -33,10 +33,10 @@ if __name__=='__main__':
         for m in lista_modulos:
             nombre_modulo=m[1]
             codigo_modulo=m[0]
-            anexos_a1_de_modulo(data_dict_anexo_1,codigo_modulo, nombre_modulo, sys.argv[2])
+            anexos_a1_de_modulo(data_dict_anexo_1, codigo_ciclo, codigo_modulo, nombre_modulo, sys.argv[2])
 
     if (sys.argv[1] == "-a2"):
-        anexos_a2_de_modulo(data_dict_anexo_2, sys.argv[2])
+        anexos_a2_de_modulo(data_dict_anexo_2, codigo_ciclo, sys.argv[2])
 
 
 

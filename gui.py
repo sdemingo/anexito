@@ -66,18 +66,18 @@ def generar():
     
     
     lista_modulos=crea_lista_modulos(text_area.get("1.0",tk.END))
-    
-    for m in lista_modulos:
-            
+    codigo_ciclo = entradas["codigo_ciclo"].get()
+
+    for m in lista_modulos:            
         nombre_modulo=m[1]
         codigo_modulo=m[0]
         nombres=fichero_var.get()
 
         if (radio_var.get() == "anexo 1"):
-            anexos_a1_de_modulo(datos_a1, codigo_modulo, nombre_modulo, nombres)
+            anexos_a1_de_modulo(datos_a1, codigo_ciclo, codigo_modulo, nombre_modulo, nombres)
 
         if (radio_var.get() == "anexo 2"):
-            anexos_a2_de_modulo(datos_a2, nombres)
+            anexos_a2_de_modulo(datos_a2, codigo_ciclo, nombres)
 
     messagebox.showinfo("Listo", f"Generados generados")
 

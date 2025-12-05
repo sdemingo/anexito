@@ -68,7 +68,7 @@ def crea_lista_modulos(texto_modulos):
 
 
 
-def anexos_a1_de_modulo(data_dict_anexo_1, codigo_modulo, nombre_modulo,fichero_nombres):
+def anexos_a1_de_modulo(data_dict_anexo_1, codigo_ciclo, codigo_modulo, nombre_modulo,fichero_nombres):
 
     directorio=f"{BASE_DIR}/anexos_a1_{codigo_modulo}"
     os.makedirs(directorio, exist_ok = True)
@@ -95,7 +95,7 @@ def anexos_a1_de_modulo(data_dict_anexo_1, codigo_modulo, nombre_modulo,fichero_
 
 
 
-def anexos_a2_de_modulo(data_dict_anexo_2, fichero_nombres):
+def anexos_a2_de_modulo(data_dict_anexo_2, codigo_ciclo, fichero_nombres):
 
     directorio=f"{BASE_DIR}/anexos_a2_{codigo_ciclo}"
     os.makedirs(directorio, exist_ok = True)
