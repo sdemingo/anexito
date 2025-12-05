@@ -66,7 +66,7 @@ def generar():
     
     
     lista_modulos=crea_lista_modulos(text_area.get("1.0",tk.END))
-    codigo_ciclo = entradas["codigo_ciclo"].get()
+    codigo_ciclo = entradas["código_ciclo"].get()
 
     for m in lista_modulos:            
         nombre_modulo=m[1]
