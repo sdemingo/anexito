@@ -9,7 +9,7 @@ from datos import *
 from app import *
 
 
-VERSION="1.1"
+VERSION="1.2"
 
 #BASE_DIR="anexos"
 
@@ -163,11 +163,11 @@ def main_gui():
 
 
     # ---------- BOTONES INFERIORES ----------
-    btn_generar = tk.Button(root, text="Generar", width=15, command=generar)
-    btn_salir = tk.Button(root, text="Salir", width=15, command=salir)
+    btn_salir = tk.Button(root, text="❌ Salir", width=15, command=salir)
+    btn_generar = tk.Button(root, text="✔️  Generar", width=15, command=generar)
 
-    btn_generar.grid(row=14, column=1, sticky="w", padx=5, pady=10)
-    btn_salir.grid(row=14, column=1, sticky="e", padx=5, pady=10)
+    btn_salir.grid(row=14, column=1, sticky="w", padx=5, pady=10)
+    btn_generar.grid(row=14, column=1, sticky="e", padx=5, pady=10)
 
 
     root.mainloop()
