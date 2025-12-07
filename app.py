@@ -79,11 +79,11 @@ def anexos_a1_de_modulo(data_dict_anexo_1, codigo_ciclo, codigo_modulo, nombre_m
             linea=linea.replace("\n","").replace("\t"," ")
             campos=linea.split(",")
             if len(campos)==1:
-                nombre=campos[0]
+                nombre=campos[0].strip(" ")
                 apellidos=""
             else:
-                nombre=campos[0]
-                apellidos=campos[1]
+                nombre=campos[0].strip(" ")
+                apellidos=campos[1].strip(" ")
             if len(nombre)>0:
                 print ("Genero anexo I para "+nombre+" "+apellidos)
                 data_dict_anexo_1['Alumnoa']=nombre+" "+apellidos
@@ -106,11 +106,11 @@ def anexos_a2_de_modulo(data_dict_anexo_2, codigo_ciclo, fichero_nombres):
             linea=linea.replace("\n","").replace("\t"," ")
             campos=linea.split(",")
             if len(campos)==1:
-                nombre=campos[0]
+                nombre=campos[0].strip(" ")
                 apellidos=""
             else:
-                nombre=campos[0]
-                apellidos=campos[1]
+                nombre=campos[0].strip(" ")
+                apellidos=campos[1].strip(" ")
             if len(nombre)>0:
                 print ("Genero anexo II para "+nombre+" "+apellidos)
                 data_dict_anexo_2['Alumnoa_2']=nombre+" "+apellidos
