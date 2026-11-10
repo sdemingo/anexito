@@ -1,6 +1,7 @@
 
 import os
 import sys
+import unicodedata
 
 from fillpdf import fillpdfs
 from datos import *
@@ -45,13 +46,22 @@ def ruta_recurso(path_relativo):
 
 
 def limpia_nombre(nombre):
-    return nombre.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n").replace(" ","_")
+    ##return nombre.strip(" ").strip("_").replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n").replace(" ","_").replace("Á","A").replace("É","E").replace("Í","I").replace("Ó","O").replace("Ú","U").replace("Ñ","N")
 
+    if not nombre:
+        return ""
+    # Descompone los caracteres acentuados (NFD) y elimina los diacríticos
+    nfkd_form = unicodedata.normalize('NFKD', nombre)
+    sin_tildes = "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+    return sin_tildes.strip(" _").replace(" ", "_")
 
-def genera_anexo(directorio, nombre,plantilla,campos,suffix):
-    plantilla_pdf = ruta_recurso(plantilla)
-    fichero=limpia_nombre(nombre)+suffix
-    fillpdfs.write_fillable_pdf(plantilla_pdf, f"{directorio}/{fichero}", campos)
+def genera_anexo(directorio, nombre, plantilla, campos, suffix):
+    try:
+        plantilla_pdf = ruta_recurso(plantilla)
+        fichero=limpia_nombre(nombre)+suffix
+        fillpdfs.write_fillable_pdf(plantilla_pdf, f"{directorio}/{fichero}", campos)
+    except Exception as e:
+        print(f"ERROR: No se ha podido crear anexo para {nombre}. {e}")
 
 
 def crea_lista_modulos(texto_modulos):    
@@ -68,10 +78,16 @@ def crea_lista_modulos(texto_modulos):
 
 
 
-def anexos_a1_de_modulo(data_dict_anexo_1, codigo_ciclo, codigo_modulo, nombre_modulo,fichero_nombres):
+def anexos_a1_de_modulo(data_dict_anexo_1, codigo_ciclo, codigo_modulo, nombre_modulo, fichero_nombres):
 
-    directorio=f"{BASE_DIR}/anexos_a1_{codigo_modulo}"
-    os.makedirs(directorio, exist_ok = True)
+    try:
+        nmodulo=limpia_nombre(nombre_modulo)
+        directorio=f"{BASE_DIR}/anexos_a1_{codigo_modulo}_{nmodulo}"
+        os.makedirs(directorio, exist_ok = True)
+    except Exception as e:
+        print (f"ERROR: No se ha podido crear el directorio de salida para los anexos. {e}")
+        return
+
     with open(fichero_nombres, encoding="utf-8") as f:
         for linea in f:
             if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):
@@ -88,17 +104,22 @@ def anexos_a1_de_modulo(data_dict_anexo_1, codigo_ciclo, codigo_modulo, nombre_m
                 print ("Genero anexo I para "+nombre+" "+apellidos)
                 data_dict_anexo_1['Alumnoa']=nombre+" "+apellidos
                 prefijo="{0}_{1}_".format(apellidos.replace(" ","_"), nombre.replace(" ","_"))
-                subfijo="{0}_{1}_ANEXOI.pdf".format(codigo_ciclo,codigo_modulo)
+                subfijo="{0}_{1}_ANEXOI.pdf".format(codigo_ciclo, codigo_modulo)
                 data_dict_anexo_1["NO"]=nombre_modulo
-                genera_anexo(directorio, prefijo,"plantilla-anexito-1.pdf",data_dict_anexo_1,subfijo)
+                genera_anexo(directorio, prefijo,"plantilla-anexito-1.pdf", data_dict_anexo_1, subfijo)
     
 
 
 
 def anexos_a2_de_modulo(data_dict_anexo_2, codigo_ciclo, fichero_nombres):
 
-    directorio=f"{BASE_DIR}/anexos_a2_{codigo_ciclo}"
-    os.makedirs(directorio, exist_ok = True)
+    try:
+        directorio=f"{BASE_DIR}/anexos_a2_{codigo_ciclo}"
+        os.makedirs(directorio, exist_ok = True)
+    except  Exception as e:
+        print (f"ERROR: No se ha podido crear el directorio de salida para los anexos. {e}")
+        return
+
     with open(fichero_nombres, encoding="utf-8") as f:
         for linea in f:
             if ((len(linea.strip())==0) or (linea.strip()[0]=="#")):

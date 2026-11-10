@@ -51,6 +51,6 @@ Una vez hecho esto solo necesitas ejecutar cambiando `nombres.txt` por el nombre
 Necesita la librería [fillpdf](https://github.com/t-houssian/fillpdf). Para instalarla usar `pip`:
 
 ```
+pip install tkinter
 pip install fillpdf
 ```
-
