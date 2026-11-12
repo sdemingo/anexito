@@ -9,7 +9,7 @@ from datos import *
 from app import *
 
 
-VERSION="1.2"
+VERSION="1.3"
 
 #BASE_DIR="anexos"
 

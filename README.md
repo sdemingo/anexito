@@ -31,6 +31,14 @@ Pablo Antonio,de Miguel
 Pulsando el botón `Generar` los anexos son creados en un directorio local
 llamado `anexos`.
 
+
+### Errores en la visualización del fichero final
+
+Tanto los nombres y apellidos de los alumnos como los nombres de los módulos pueden contener tildes u otros caracteres especiales. Es posible que según el visualizador de archivos PDF que usemos estos no se visualicen correctamente. En caso de que esto suceda recomendamos utilizar otro visualizador más robusto. Los motores de renderizado de PDF de **Google Chrome** (llamado PDFium) y de **Firefox** (llamado PDF.js) funcionan correctamente para esta labor según nuestras pruebas. Igualmente **Adobe Acrobat Reader** también los visualiza sin problemas.
+
+Es posible que ciertos campos nos aparezcan en blanco durante la visualización del fichero final. El error es debido también al motor de renderizado del fichero PDF y se recomienda lo dicho anteriormente.
+
+
 ## Uso por línea de comandos
 
 Para usar `anexito` a través de la línea de comandos edita el fichero `datos.py`
